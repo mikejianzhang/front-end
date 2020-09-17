@@ -18,7 +18,7 @@ var request      = require("request")
 
 app.use(helpers.rewriteSlash);
 app.use(metrics);
-app.use(express.static("public"));
+app.use(express.static("public", {maxAge: 86400000}));
 if(process.env.SESSION_REDIS) {
     console.log('Using the redis based session manager');
     app.use(session(config.session_redis));
